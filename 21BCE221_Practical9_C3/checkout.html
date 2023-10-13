@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check-Out</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+    <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;1,800&display=swap');
+
+        :root
+        {
+            --bg: rgb(30,30,30);
+            --bg-light: rgb(45,45,45);
+            --font-light: rgb(245,245,245);
+            --font-dark: rgb(30,30,30);
+            --yellow: rgb(255, 154, 0);
+            --red: rgb(255, 46, 99);
+            --purple: rgb(162, 0, 255);
+            --cyan: rgb(0, 241, 229);
+        }
+
+
+        *
+        {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+            scroll-behavior: smooth;
+        }
+
+        body
+        {
+            background-color: var(--font-light);
+            color: var(--font-light);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: auto;
+        }
+
+        /* navbar */
+
+        .navbar-shadow
+        {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding-bottom: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+            width: 100%;
+        }
+        
+        .navbar
+        {
+            backdrop-filter: blur(10px);
+            width: 95%;
+            background-color: var(--bg);
+            /* border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px; */
+            border-radius: 20px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            margin-top: 10px;
+            /* filter: drop-shadow(0 0 100px var(--cyan)); */
+            overflow: hidden;
+        }
+
+        .logo
+        {
+            font-weight: 800;
+            font-style: italic;
+            color: var(--font-light);
+            font-size: 24px;
+            margin-left: 10px;
+            text-decoration: underline;
+        }
+
+        .nav-link
+        {
+            padding: 5px 15px;
+            margin: 5px;
+            text-decoration: none;
+            color: var(--font-light);
+            font-weight: 800;
+            font-style: italic;
+        }
+
+        .nav-link:hover
+        {
+            /* border: 2px solid var(--bg-light); */
+            /* outline: 2px solid var(--bg-light); */
+            color: var(--font-dark);
+            background-color: var(--font-light);
+            border-radius: 20px;
+            text-decoration: none;
+        }
+
+        .login
+        {
+            padding: 5px 15px;
+            margin: 5px;
+            text-decoration: none;
+            color: var(--font-dark);
+            border-radius: 20px;
+            background-color: var(--font-light);
+            font-weight: 800;
+            font-style: italic;
+        }
+
+        .login:hover
+        {
+            text-decoration: underline;
+            color: rgb(70, 0, 0);
+        }
+
+        ion-icon
+        {
+            color: var(--font-dark);
+        }
+        
+        ion-icon:hover
+        {
+            color: var(--font-dark);
+        }
+
+        /* navbar over */
+
+
+        .checkout-details
+        {
+            width: 80%;
+            padding: 30px;
+            border: 2px solid var(--red);
+            border-radius: 10px;
+            background-color: var(--bg-light);
+            display: flex;
+            flex-direction: column;
+            margin: 45px 0 50px 0;
+            /* filter: drop-shadow(0 0 1000px var(--red)); */
+        }
+
+        .final-cart
+        {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between; 
+            gap: 20px;
+        }
+
+        .final-btn
+        {
+            display: flex;
+            flex-direction: row;
+            padding: 20px;
+            width: 100%;
+            border-radius: 10px;
+            font-style: italic;
+            font-weight: 800;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--font-light); 
+            color: var(--font-dark);
+            font-size: 18px;
+        }
+
+        .checkout
+        {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pay-btns
+        {
+            display: flex;
+            width: 100%;
+            flex-direction: row;
+            gap: 20px;
+        }
+
+        .pay-btn
+        {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--red);
+            color: var(--bg);
+            border-radius: 10px;
+            text-decoration: none;
+            padding: 20px;
+            font-weight: 800;
+            font-style: italic;
+            width: 100%;
+            font-size: 18px;
+            border: none;
+        }
+
+        .pay-btn:hover
+        {
+            background-color: rgb(255, 28, 84);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+
+        /* form */
+        
+        .form-container
+        {
+            background-color: rgb(245, 245, 245,0.7);
+            
+            /* background: linear-gradient(45deg, #08D9D6 0%, #08d9d600 20%) repeat scroll 0% 0%,
+            linear-gradient(200deg, #FF2E63 0%, #08d9d600 60%) repeat scroll 100% 0%,
+            linear-gradient(300deg, #FF9A00 0%, #08d9d600 20%) repeat scroll 100% 0%,
+            linear-gradient(90deg, #ffffff 0%, #08d9d600 100%) repeat scroll 100% 0%,
+            linear-gradient(0deg, #f200ff 0%, #08d9d600 100%) repeat scroll 100% 0%; */
+            width: 80%;
+            padding: 30px;
+            margin: 45px 0px 45px 0px;
+            /* border: 2px solid var(--red); */
+            border-radius: 10px;
+            filter: drop-shadow(0 0 100px rgba(0, 255, 255, 0.5));
+        }
+
+        .input
+        {
+            background-color: rgb(45, 45, 45);
+            color: rgb(245, 245, 245);
+            padding: 20px 20px;
+            border-radius: 10px;
+            width: 100%;
+            border: hidden;
+        }
+
+        .input::placeholder
+        {
+            color: #ccc;
+        }
+
+        ::-webkit-calendar-picker-indicator
+        {
+            background-color: white; 
+            padding: 5px;
+            border-radius: 20px;
+        }
+        
+        .icon
+        {
+            font-size: 20px;
+        }
+
+        .three
+        {
+            display: grid;
+            grid-template-columns: 30px 1fr 1fr;
+            gap: 10px;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .two
+        {
+            display: grid;
+            grid-template-columns: 30px 1fr;
+            gap: 10px;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .two-equal
+        {
+            display: grid;
+            grid-template-columns: 30px 1fr 1fr;
+            gap: 10px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .four
+        {
+            display: grid;
+            grid-template-columns: 20px 1fr 20px 1fr;
+            gap: 20px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .four-gender
+        {
+            display: grid;
+            grid-template-columns: 20px 1fr 1fr 1fr;
+            gap: 20px;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .form
+        {
+            display: grid;
+            width: 100%;
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+        
+        
+        a
+        {
+            color: white;
+            text-decoration: none;
+        }
+        
+        a:hover
+        {
+            text-decoration: underline;
+        }
+        
+        .button1
+        {
+            background-color: #f10175;
+        }
+        
+        .button1:hover
+        {
+            background-color: #d60168;
+            cursor: pointer;
+        }
+
+        .button2
+        {
+            background-color: #fa9922;
+        }
+        
+        .button2:hover
+        {
+            background-color: #e98203;
+            cursor: pointer;
+        }
+
+        .point:hover
+        {
+            cursor: pointer;
+        }
+
+        .error
+        {
+            height: auto;
+            color: rgb(189, 0, 0);
+            /* padding and margin */
+        }
+
+        .address
+        {
+            height: 100px;
+        }
+
+        .btns
+        {
+            margin-top: 20px;
+        }
+
+        /* form over */
+
+
+        .bigx-container
+        {
+            width: 100%;
+            height: 100vh;
+            color: rgb(69, 69, 69,0.69);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1200px;
+            font-weight: 800;
+            font-style: italic;
+            position: absolute;
+            z-index: -1;
+            top: 140px;
+            overflow: hidden;
+        }
+
+
+    </style>
+
+</head>
+<body ng-app = "app" ng-controller = "ctrl">
+
+    <div class="bigx-container">
+        <span>X</span>
+    </div>
+    <div class="navbar-shadow">
+        
+        <div class="navbar" id="navbar">
+
+            <p class="logo" id="logo">ShopX</p>
+
+            <nav class="nav" id="nav">
+
+                <a href="Home.html" class="nav-link">Home</a>
+                <!-- <a href="#shoes" class="nav-link">Shoes</a>
+                <a href="#earbuds" class="nav-link">Earbuds</a>
+                <a href="#watch" class="nav-link">Watch</a>
+                <a href="#phone" class="nav-link">Phones</a> -->
+                <!-- <a href="login.html" class="login">Login</a>
+                <a href="logon.html" class="login">Logon</a> -->
+                <a href="logon.html" class="login">Logout</a>
+
+            </nav>
+
+        </div>
+
+    </div>
+
+    <div class="form-container">
+
+        <form action="https://www.google.com/" mathod="post" class="form" name="signup-form" onsubmit="return validate_form()">
+
+            <div class="three">
+                <span class="icon"><ion-icon name="person-circle"></ion-icon></span>
+                <span>
+                    <input type="text" class="input" id="fname" name="fname" placeholder="First Name*">
+                </span>
+                <span>
+                    <input type="text" class="input" id="lname" name="lname" placeholder="Last Name*">
+                </span>
+            </div>
+
+            <div class="error" id="ename"></div>
+
+            <div class="two">
+                <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                <input type="email" name="email" id="email" class="input" placeholder="Email*">
+            </div>
+
+            <div class="error" id="eemail"></div>
+            
+            <div class="four">
+                <span class="icon"><ion-icon name="tablet-portrait"></ion-icon></span>
+                <input type="num" name="contactnum" id="contactnum" class="input" placeholder="Contact Number*">
+                
+                <span class="icon"><ion-icon name="radio-button-on"></ion-icon></span>
+                <input type="number" name="pin" id="pin" class="input" placeholder="PIN Code*">
+            </div>
+            
+            <div class="error" id="epincont"></div>
+            
+            <div class="two">
+                <span class="icon"><ion-icon name="location"></ion-icon></span>
+                <input type="text" name="address" id="address" placeholder="Address*" class="input address">
+            </div>
+
+            <div class="error" id="eaddress"></div>
+
+            <div class="three btns">
+                <span class="icon"><ion-icon name="bag-handle"></ion-icon></span>
+                <button class="pay-btn" type="submit">Cash on Delivery</a>
+                <button class="pay-btn" type="submit">Online Payment</a>
+            </div>
+
+        </form>
+
+
+    </div>
+
+    <!-- <div class="product" id="cart">
+
+        <div class="title-container left-bg">
+            <p class="title">Cart</p>
+        </div>
+
+        <div class="all-cards">
+
+            <div class="card" ng-repeat="item in cart">
+
+                <img src={{item.src}} alt="Cart Item" class="image">
+                <p class="lable">{{item.title}}</p>
+                <p class="lable">Price: {{item.price}}$</p>
+                <div class={{item.line}}>{{item.desc}}</div>
+                <p class={{item.btn}}>Quantity: {{item.quantity}}</p>
+                <div class="options">
+                    <p class={{item.btn}} ng-click="remove_one(item)">-</p>
+                    <p class={{item.btn}} ng-click="add_one(item)">+</p>
+                </div>
+                <a href="" class={{item.btn}} ng-click = "remove_from_cart(item)">Remove</a>
+            </div>
+
+        </div>
+
+
+    <div class="checkout-details">
+        <div class="final-cart">
+            <p class="final-btn">Total Amount : {{total_amount}}</p>
+            <p class="final-btn">Total Products : {{total_product}}</p>
+        </div>
+
+        <div class="checkout">
+            <div class="title-container left-bg">
+                <p class="title">Payment</p>
+            </div>
+
+            <div class="pay-btns">
+                <a href="payout.html" class="pay-btn">Cash</a>
+                <a href="payout.html" class="pay-btn">Online Payment</a>
+            </div>
+        </div>
+    </div> -->
+
+    <script src="logic.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+
+    <script>
+
+        let isokay = true;
+        
+        function seterror(id,error)
+        {
+            let error_box = document.getElementById(id);
+            error_box.innerHTML = error;
+            error_box.style.padding = "5px 10px 10px 10px";
+            error_box.style.margin = "0 5px 5px 40px";
+            // error_box.style.fontSize = "12px";
+
+            isokay = false;
+        }
+        
+        function removeerror(id,error)
+        {
+            let error_box = document.getElementById(id);
+            error_box.innerHTML = error;
+            error_box.style.padding = "0px";
+            error_box.style.margin = "0";
+        }
+
+        function validate_form()
+        {
+            let form = document.forms['signup-form'];
+
+            let fname = form['fname'].value;
+            let lname = form['lname'].value;
+            let email = form['email'].value;
+            let pin = form['pin'].value;
+            let contactnum = form['contactnum'].value;
+            let address = form['address'].value;
+            
+            removeerror("ename","");
+            removeerror("eemail","");
+            removeerror("epincont","");
+            removeerror("eaddress","");
+
+            //check address
+            {
+                let len = address.length;
+
+                if(len==0)
+                seterror("eaddress","*Address can not be empty!");
+            }
+
+            //check pin and contact number
+            {
+                let lenpin = pin.length;
+                let lencont = contactnum.length;
+
+                if(lenpin==0 || lencont==0)
+                seterror("epincont","*Contact Number and PIN Code can not be emplty!");
+                else if(lenpin!=6 || lencont!=10)
+                seterror("epincont","*Contact Number and PIN Code should be of 10 and 6 digits respectively!");
+
+            }
+
+            
+            //check fname
+            {
+                let len = fname.length;
+
+                if(len==0)
+                {
+                    seterror("ename","*First Name and Last Name should not be empty and only contain letters!");
+                    ename = 1;
+                }
+
+                for(let i=0;i<len;i++)
+                {
+                    let c = fname.charCodeAt(i);
+
+                    if(!((c>=65 && c<=90) || (c>=97 && c<=122)))
+                    seterror("ename","*First Name and Last Name should not be empty and only contain letters!")
+                }
+            
+            }
+
+            //check lname
+            {
+                let len = lname.length;
+
+                if(len==0)
+                seterror("ename","*First Name and Last Name should not be empty and only contain letters!");
+
+                for(let i=0;i<len;i++)
+                {
+                    let c = lname.charCodeAt(i);
+
+                    if(!((c>=65 && c<=90) || (c>=97 && c<=122)))
+                    seterror("ename","*First Name and Last Name should not be empty and only contain letters!");
+                }
+            }
+
+
+
+            let eemail = false;
+
+            //check email
+            {
+                let len = email.length;
+
+                if(len==0)
+                {
+                    seterror("eemail","*Email should not be empty!");
+                    eemail = true;
+                }
+                else if(len>23 || len<23)
+                {
+                    seterror("eemail","*Email should be in the form of DDCCCDDD@nirmauni.ac.in, D=any digit, C=any letter!");
+                    eemail = true;
+                }
+
+                let rollno = email.slice(0,8);
+                let domain = email.slice(8);
+
+                if(!(domain == "@nirmauni.ac.in" || domain =="@NIRMAUNI.AC.IN") && eemail==false)
+                {
+                    seterror("eemail","*Email should be in the form of DDCCCDDD@nirmauni.ac.in, D=any digit, C=any letter!");
+                    eemail=true;
+                }
+
+                if(eemail==false)
+                {    
+                    for(let i=0;i<rollno.length;i++)
+                    {
+                        let c = rollno.charCodeAt(i);
+
+                        if(i>=2 && i<=4)
+                        {
+                            if(!((c>=65 && c<=90) || (c>=97 && c<=122)))
+                            seterror("eemail","*Email should be in the form of DDCCCDDD@nirmauni.ac.in, D=any digit, C=any letter!");
+                        }
+                        else
+                        {
+                            if(!(c>=48 && c<=57))
+                            seterror("eemail","*Email should be in the form of DDCCCDDD@nirmauni.ac.in, D=any digit, C=any letter!");
+                        }
+                    }
+                }
+            }
+
+            if(isokay==true)
+            {
+                alert("Order Done Successfully!");
+            }
+
+
+            return isokay;
+        }
+
+    </script>
+
+
+
+</body>
+</html>

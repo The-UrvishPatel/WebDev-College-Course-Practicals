@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+
+    <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+        
+        *
+        {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body
+        {
+            background-color: rgb(30, 30, 30);
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .form-container
+        {
+            background-color: rgb(245, 245, 245);
+        
+            /* background: linear-gradient(45deg, #08D9D6 0%, #08d9d600 20%) repeat scroll 0% 0%,
+                        linear-gradient(200deg, #FF2E63 0%, #08d9d600 60%) repeat scroll 100% 0%,
+                        linear-gradient(300deg, #FF9A00 0%, #08d9d600 20%) repeat scroll 100% 0%,
+                        linear-gradient(90deg, #ffffff 0%, #08d9d600 100%) repeat scroll 100% 0%,
+                        linear-gradient(0deg, #f200ff 0%, #08d9d600 100%) repeat scroll 100% 0%; */
+            width: 80%;
+            padding: 30px 50px 50px 50px;
+            margin: 30px 0px;
+            border-radius: 20px;
+            /* border: 2px solid rgb(255, 40, 40); */
+            /* filter: drop-shadow(0 0 1000px rgb(8, 217, 214,0.7)); */
+            filter: drop-shadow(0 0 100px rgba(0, 255, 255, 0.5));
+        }
+
+        .input
+        {
+            background-color: rgb(30, 30, 30);
+            color: rgb(245, 245, 245);
+            padding: 20px 20px;
+            border-radius: 20px;
+            width: 100%;
+            border: hidden;
+        }
+
+        ::-webkit-calendar-picker-indicator
+        {
+            background-color: white; 
+            padding: 5px;
+            border-radius: 20px;
+        }
+        
+        .icon
+        {
+            font-size: 20px;
+        }
+
+        .three
+        {
+            display: grid;
+            grid-template-columns: 30px 1fr 1fr;
+            gap: 10px;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .two
+        {
+            display: grid;
+            grid-template-columns: 30px 1fr;
+            gap: 10px;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .two-equal
+        {
+            display: grid;
+            grid-template-columns: 30px 1fr 1fr;
+            gap: 10px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .four
+        {
+            display: grid;
+            grid-template-columns: 20px 1fr 20px 1fr;
+            gap: 20px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .four-gender
+        {
+            display: grid;
+            grid-template-columns: 20px 1fr 1fr 1fr;
+            gap: 20px;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .form
+        {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+        
+        
+        a
+        {
+            color: white;
+            text-decoration: none;
+        }
+        
+        a:hover
+        {
+            text-decoration: underline;
+        }
+        
+        .button1
+        {
+            background-color: #f10175;
+        }
+        
+        .button1:hover
+        {
+            background-color: #d60168;
+            cursor: pointer;
+        }
+
+        .button2
+        {
+            background-color: #fa9922;
+        }
+        
+        .button2:hover
+        {
+            background-color: #e98203;
+            cursor: pointer;
+        }
+
+        .point:hover
+        {
+            cursor: pointer;
+        }
+
+        .error
+        {
+            height: auto;
+            color: rgb(189, 0, 0);
+            /* padding and margin */
+        }
+
+        /* navbar */
+
+        .title
+        {
+            height: 50px;
+            border-radius: 20px;
+            background-color: rgb(245,245,245);
+            margin-bottom: 50px;
+            /* filter: drop-shadow(0 0 5px rgba(200, 200, 200, 0.5)); */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px;
+        }
+
+        .logo
+        {
+            width: 40px;
+            border-radius: 50%;
+            margin: 10px;
+        }
+
+        .brand
+        {
+            height: 40px;
+            border-radius: 10px;
+        }
+
+
+        .signin
+        {
+            padding: 5px 20px;
+            color: rgb(245, 245, 245);
+            background-color: rgb(77, 0, 77);
+            border: hidden;
+            border-radius: 10px;
+        }
+
+        .signin:hover
+        {
+            background-color: rgb(43, 0, 43);
+            cursor: pointer;
+        }
+
+        .img
+        {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* navbar over */
+
+        </style>
+        
+</head>
+<body ng-app="app" ng-controller="ctrl">
+<!-- 
+    <div class="title">
+            
+        <img src="C:\My Drive\Sem 4\Web Tech\Practical10\SocialX\SocialX.png" alt="logo" class="logo">
+        <button class="signin">Signin</button>
+
+    </div> -->
+    
+    <div class="form-container">
+
+        <div class="title">
+
+            <div class="img">
+                <img src="SocialX-Logo\SocialX.png" alt="logo" class="logo">
+                <img src="SocialX-Logo\Brand.jpg" alt="Brand" class="brand">
+            </div>
+
+            <a class="signin" href="SocialX_Signin.html">Signin</a>
+
+        </div>
+
+
+        <form action="SocialX_Signin.html" mathod="post" class="form" name="signup-form" onsubmit="return validate_form()">
+
+            <div class="three">
+                <span class="icon"><ion-icon name="person-circle"></ion-icon></span>
+                <span>
+                    <input type="text" class="input" id="fname" name="fname" ng-model= "fnamein" placeholder="First Name*">
+                </span>
+                <span>
+                    <input type="text" class="input" id="lname" name="lname" ng-model="lnamein" placeholder="Last Name*">
+                </span>
+            </div>
+
+            <div class="error" id="ename"></div>
+
+            <div class="two">
+                <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                <input type="email" name="email" id="email" class="input" ng-model="emailin" placeholder="Email*">
+            </div>
+
+            <div class="error" id="eemail"></div>
+
+            <div class="two">
+                <span><ion-icon name="create"></ion-icon></span>
+                <input type="text" class="input" placeholder="*Description" id="desc" name="desc" ng-model="descin">
+            </div>
+
+            <div class="error" id="edesc"></div>
+
+            <div class="three">
+                <span class="icon"><ion-icon name="eye-off"></ion-icon></span>
+                <span><input type="password" placeholder="Password*" class="input" id="pw" name="pw"></span>
+                <span><input type="password" placeholder="Retype Password*" class="input" id="rpw" name="rpw"></span>
+            </div>
+
+            <div class="error" id="epw"></div>
+           
+            <div class="four">
+                <span class="icon"><ion-icon name="balloon"></ion-icon></span>
+                <span><input type="date" placeholder="Date of Birth" class="input point" id="dob" ng-model="dobin" name="dob"></span>
+                <span class="icon"><ion-icon name="library"></ion-icon></ion-icon></span>
+                <span>
+                    <select name="cyos" id="current-year" class="input point" id="cyos">
+                        <option value="None" selected  class="input">Select Year of Study*</option>
+                        <option value="1st Year">1st Year</option>
+                        <option value="2nd Year">2nd Year</option>
+                        <option value="3rd Year">3rd Year</option>
+                        <option value="4th Year">4th Year</option>
+                    </select>
+                </span>
+            </div>
+
+            <div class="error" id="ecyos"></div>
+
+            <div class="four-gender">
+                <span class="icon"><ion-icon name="transgender"></ion-icon></span>
+                    
+                <div class="input">
+                    <input type="radio" id="male" class="point" name="Gender" value="Male">
+                    <label for="male">Male</label>
+                </div>
+                
+                <div class="input">
+                    <input type="radio" id="female" class="point" name="Gender" value="Female">
+                    <label for="female">Female</label>
+                </div>
+                
+                <div class="input">
+                    <input type="radio" id="other" class="point" name="Gender" value="Other" checked>
+                    <label for="other">Other</label>
+                </div>
+            </div>
+
+            <div class="error" id="egender"></div>
+
+            <div class="three">
+                <span></span>
+                <button type="reset" class="button1 input" id="reset"><b>Reset</b></button>
+                <button type="submit" class="button2 input" id="signup" ng-click="add_profile()"><b>Signup</b></button>
+            </div>
+
+        </form>
+
+
+    </div>
+
+    <script src="home.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script>
+
+        let isokay = true;
+        
+        function seterror(id,error)
+        {
+            let error_box = document.getElementById(id);
+            error_box.innerHTML = error;
+            error_box.style.padding = "5px 10px 10px 10px";
+            error_box.style.margin = "0 5px 5px 40px";
+            // error_box.style.fontSize = "12px";
+
+            if(id=="ecyos")
+            error_box.style.marginLeft = "auto";
+
+            isokay = false;
+        }
+        
+        function removeerror(id,error)
+        {
+            let error_box = document.getElementById(id);
+            error_box.innerHTML = error;
+            error_box.style.padding = "0px";
+            error_box.style.margin = "0";
+
+            if(id=="ecyos")
+            error_box.style.marginLeft = "0";
+        }
+
+        function validate_form()
+        {
+            isokay = true;
+            
+            let form = document.forms['signup-form'];
+
+            let fname = form['fname'].value;
+            let lname = form['lname'].value;
+            let email = form['email'].value;
+            let pw = form['pw'].value;
+            let rpw = form['rpw'].value;
+            let dob = form['dob'].value;
+            let cyos = form['cyos'].value;
+            let gender = form['Gender'].value;
+            let desc = form['desc'].value;
+
+            removeerror("ename","")
+            removeerror("eemail","")
+            removeerror("epw","")
+            removeerror("ecyos","")
+
+            //check fname
+            {
+                let len = fname.length;
+
+                if(len==0)
+                {
+                    seterror("ename","*First Name and Last Name should not be empty and only contain letters!");
+                    ename = 1;
+                }
+
+                for(let i=0;i<len;i++)
+                {
+                    let c = fname.charCodeAt(i);
+
+                    if(!((c>=65 && c<=90) || (c>=97 && c<=122)))
+                    seterror("ename","*First Name and Last Name should not be empty and only contain letters!")
+                }
+            
+            }
+
+            //check lname
+            {
+                let len = lname.length;
+
+                if(len==0)
+                seterror("ename","*First Name and Last Name should not be empty and only contain letters!");
+
+                for(let i=0;i<len;i++)
+                {
+                    let c = lname.charCodeAt(i);
+
+                    if(!((c>=65 && c<=90) || (c>=97 && c<=122)))
+                    seterror("ename","*First Name and Last Name should not be empty and only contain letters!");
+                }
+            }
+
+
+
+            let eemail = false;
+
+            //check email
+            {
+                let len = email.length;
+
+                if(len==0)
+                {
+                    seterror("eemail","*Email should not be empty!");
+                    eemail = true;
+                }
+                else if(len>23 || len<23)
+                {
+                    seterror("eemail","*Email should be in the form of DDCCCDDD@nirmauni.ac.in, D=any digit, C=any letter!");
+                    eemail = true;
+                }
+
+                let rollno = email.slice(0,8);
+                let domain = email.slice(8);
+
+                if(!(domain == "@nirmauni.ac.in" || domain =="@NIRMAUNI.AC.IN") && eemail==false)
+                {
+                    seterror("eemail","*Email should be in the form of DDCCCDDD@nirmauni.ac.in, D=any digit, C=any letter!");
+                    eemail=true;
+                }
+
+                if(eemail==false)
+                {    
+                    for(let i=0;i<rollno.length;i++)
+                    {
+                        let c = rollno.charCodeAt(i);
+                        // console.log(c,i);
+
+                        if(i>=2 && i<=4)
+                        {
+                            if(!((c>=65 && c<=90) || (c>=97 && c<=122)))
+                            seterror("eemail","*Email should be in the form of DDCCCDDD@nirmauni.ac.in, D=any digit, C=any letter!");
+                        }
+                        else
+                        {
+                            if(!(c>=48 && c<=57))
+                            seterror("eemail","*Email should be in the form of DDCCCDDD@nirmauni.ac.in, D=any digit, C=any letter!");
+                        }
+                    }
+                }
+            }
+
+
+            let epw = false;
+
+            //check password and rpw
+            {
+                let lenpw = pw.length;
+
+                if(lenpw==0)
+                {
+                    seterror("epw","*Password should not be empty!");
+                    epw=true;
+                }
+
+                if(lenpw<8 && epw==false)
+                {
+                    seterror("epw","*Password should be atleast 8 characters long!");
+                    epw=true;
+                }
+
+                let ul=false,ll=false,d=false,sc=false;
+
+                let scl = "@#$%&" // regular expression to match special characters
+
+                if(epw==false)
+                {
+                    for(let i=0;i<lenpw;i++)
+                    {
+                        let c = pw.charCodeAt(i);
+
+                        // console.log(c);
+
+                        if((c>=65 && c<=90))
+                        ul=true;
+                        else if((c>=97 && c<=122))
+                        ll=true;
+                        else if((c>=48 && c<=57))
+                        d=true;
+                        else if(scl.includes(String.fromCharCode(c)))
+                        sc=true;
+                        else
+                        {
+                            seterror("epw","*Password should contain atleast one uppercase letter, lowercase letter, digit and special character(@,#,$,%,&)!");
+                            // console.log("hey");
+                            break;
+                        }
+                    }
+                
+                    // console.log(ul,ll,d,sc);
+
+                    if(!ul || !ll || !d || !sc)
+                    {
+                        seterror("epw","*Password should contain atleast one uppercase letter, lowercase letter, digit and special character(@,#,$,%,&)!");
+                    }
+                }
+                
+
+                let lenrpw = rpw.length;
+
+                if(lenrpw==0 && epw==false)
+                {
+                    seterror("epw","*Retype Password should not be empty!");
+                    epw=true;
+                }
+
+                if(pw!=rpw && epw==false)
+                seterror("epw","*Password and Retype Password must be identical!");
+            }
+
+            //check cyos
+            {
+                if(cyos=="None")
+                seterror("ecyos","*Please choose current year of study!");
+            }
+
+            // if(isokay==true)
+            // {
+            //     data = {"name":fname+" "+lname, "email":email, "password": pw, "dob":dob, "desc": desc, "gender":gender,"cyos":cyos};
+            //     localStorage.setItem(String(email),JSON.stringify(data));
+            //     alert("SignUp Successfully!");
+            // }
+
+            // console.log("urvish",isokay);
+
+
+            return isokay;
+        }
+
+
+    </script>
+    <script src="profile.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap" rel="stylesheet">
+
+    <style>
+
+        /* *
+        {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        } */
+
+        body
+        {
+            padding: 0;
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            /* font-family:Arial, Helvetica, sans-serif; */
+            background-color: aliceblue;
+        }
+
+        img
+        {
+            width: 100px;
+        }
+
+        div
+        {
+            width: 100%;
+            background-color: #00022d;
+            color: white;
+        }
+
+        .footer
+        {
+            background-color: #00011a;
+            text-align: center;
+        }
+
+        .footer:hover
+        {
+            text-shadow: 0px 0px 10px rgb(0, 255,242);
+            filter: dropshadow(color= rgb(0, 255,242), offx=0, offy=0);
+        }
+
+        h2, h3
+        {
+            padding: 10px;
+            background-color: rgb(64, 0, 39);
+            border-radius: 5px;
+            color: white;
+        }
+
+        a
+        {
+            color: rgb(0, 255, 242);
+            text-decoration: none;
+        }
+
+        td
+        {
+            padding: 5px;
+        }
+
+        span
+        {
+            display: inline-block;
+            border: 1px solid rgb(0, 242, 255);
+            background-color: #003a3a;
+            border-radius: 5px;
+            padding: 3px;
+            margin: 5px;
+        }
+
+        .subtitle
+        {
+            background-color: rgba(255, 0, 119, 0.647);
+            border-radius: 5px;
+            padding: 5px;
+        }
+
+        img
+        {
+            border-radius: 50%;
+        }
+
+
+    </style>
+</head>
+<body>
+    
+    <div>
+
+        <!-- we can add border here in table to see the table Structure -->
+        <table>
+            <tr>
+                <td>
+                    <!-- This is nested table and we can add border here in table to see the table Structure -->
+                    <table>
+                        <tr>
+                            <h2 id="name">
+                                Urvish Patel
+                            </h2>
+                        
+
+                            <td rowspan="3"><img src="IMG_20201029_214236.jpg" alt="Me"></td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <h4>
+                                    Competitive Coder | Aspiring Web Developer    
+                                    Compatible and Dedicated Learner
+                                </h4>
+                            </td>
+
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <h5>
+                                    A passionate and aspiring person. Learning new
+                                    Technologies & Skills.
+                                </h5>
+                            </td>
+
+                        </tr>
+                    </table>
+                </td>
+                <td>
+                    <!-- This is nested table and we can add border here in table to see the table Structure -->
+                    <table>
+                        <h3>DETAILS</h3>
+                        <tr>
+                            <td> <a href="urvishpatel167@gmail.com"> My Gmail </a></td>
+                        </tr>
+                        <tr>
+                            <td> +91 8849906066 </td>
+                        </tr>
+                        <tr>
+                            <td> Ahmedabad, India </td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://linkedin.com/in/urvish-patel-844146217"> LinkedIn </a> </td>
+                        </tr>
+                        <tr>
+                            <td> <a href="https://github.com/The-UrvishPatel"> Github </a> </td>
+                        </tr> 
+                        <tr>
+                            <td> DoB : 16/09/2003 </td>
+                        </tr>    
+                    </table>
+                </td>
+
+            </tr>
+
+            <tr>
+                <td>
+                    <h3>EDUCATION</h3>
+                    <h4 class="subtitle">B.Tech in Computer Science and
+                        Engineering
+                    </h4>
+                    <p>Nirma University, Ahmedabad</p>
+                    <p> 09/2021 - 06/2025, </p>
+                    <p>DSA, OOP, Electronics, Mathematics, Communication</p>
+                    <p>CGPA: 9.23/10</p>
+
+                    <h4 class="subtitle">Class 12th</h4>
+                    <p>Uttar Gujarat Education Trust, Surat</p>
+                    <p>06/2020 - 03/2021,</p>
+                    <p>Physics, Chemistry, Mathematics</p>
+                    <p>Percentile: 99.30</p>
+
+                    <h4 class="subtitle">Class 10th</h4>
+                    <p>Uttar Gujarat Education Trust, Surat</p>
+                    <p>06/2018 - 03/2019,</p>
+                    <p>Science, English, Mathematics, Social Science</p>
+                    <p>Percentile: 99.84</p>
+                </td>
+
+                <td>
+                    <h3>PERSONAL PROJECTS</h3>
+                    <h4> <a href="https://github.com/The-UrvishPatel/File-Explorer-in-C">File Management System in C</a></h4>
+                    <p>Project includes DSA concepts like Recusion, Tree & DFS</p>
+                    <h4> <a href="https://github.com/The-UrvishPatel/Banking-Management-System">Banking Management System in JAVA</a></h4>
+                    <p>Implemented functionalities of baking using OOP concepts in JAVA</p>
+                    <h4> <a href="https://github.com/The-UrvishPatel/Election-Management-System">Election Management System in C</a></h4>    
+                    <p>It is console based application provides basic functions like casting a vote, sorting, storing results in text file.</p>
+                
+                    <h3>WORK EXPERIENCE</h3>
+                    <h4 class="subtitle">Executive Member at Computer Society of India</h4>
+                    <h5>Guiding Sessions, Problem up-solving sessions</h5>
+                    <p>As executive club members, we often arrange
+                        guiding sessions in which we guide juniors, we also
+                        arrange doubt solving sessions after contests for
+                        up-solving.</p>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <h3>ACHIVEMENTS</h3>
+                    <h4><a href="https://drive.google.com/file/d/143MjFoEL0suqQz5OWe-UlQUq2YFQdC1_/view?usp=sharing">Google Kickstart : Global Rank 2955th</a></h4>
+                </td>
+
+                <td>
+                    <h3>COMPETITIVE CODING PROFLIES</h3>
+                    <h4><a href="https://www.hackerrank.com/urvishpatel167?hr_r=1">Hacker Rank : 5 star in Problem Solving </a></h4>
+                    <h4><a href="https://codeforces.com/profile/Urvish1609">Codeforces : All India Rank 6156</a></h4>
+                    <h4><a href="https://www.codechef.com/users/urvish167">Codechef : Rated 2 star</a></h4>
+                </td>
+            </tr>
+
+            <tr >
+                <td>
+                    <h3>SKILLS</h3>
+                        <span>Problem Solving</span>
+                        <span>C</span>
+                        <span>C++</span>
+                        <span>JAVA</span> 
+                        <span>STL</span>
+                        <span>Object Oriented Programming</span>
+                        <span>Data Structure and Algorithms</span>
+                        <span>Basics of HTML / CSS / JavaScript</span>
+                        <span>Basics of Frontend Web Development</span>
+                        <span> Communication Skills</span>
+                </td>
+
+                <td>
+                    <h3>INTERESTS</h3>
+                        <span>Programming</span>
+                        <span>Learning New Technologies</span>
+                        <span>Competitive Programming</span>
+                        <span>Fintech</span>
+                        <span>Web Development</span>
+                </td>
+            </tr>
+
+            <tr class="footer">
+                <td colspan="2">
+                   | © Urvish Patel - 21BCE221
+                </td>
+            </tr>
+
+        </table>
+        
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS | Practical 4</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./style.css">
+
+    <style>
+
+        /* pure external */
+
+        /* *
+        {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            word-spacing: -3px;
+            letter-spacing: -3px;
+            background-color: rgb(2, 0, 45);
+            font-family: 'Poppins', sans-serif;
+        } */
+
+
+
+
+        .name
+        {
+            margin: 2px;
+            padding: 2px;
+            color: rgb(238, 247, 255);
+            /* border: 1px solid red; */
+            word-spacing: normal;
+            letter-spacing: normal;
+            font-size: 50px;
+        }
+
+        
+        
+        
+        /* pure inline */
+        /* .name_container
+        {
+            text-align: center;
+            margin-top: 50px;
+        } */
+
+
+
+
+        /* pure external */
+        /* .name_container:hover
+        {
+            text-shadow: 0px 0px 10px rgba(0, 255, 242, 0.75);
+            filter: dropshadow(color= rgba(0, 255, 242, 0.75), offx=0, offy=0);
+        } */
+
+
+
+
+        .tag
+        {
+            margin: 2px;
+            padding: 2px;
+            color: rgb(238, 247, 255);
+            /* border: 1px solid red; */
+            word-spacing: normal;
+            letter-spacing: normal;
+            font-size: 20px;
+        }
+
+        
+        
+        
+        /* pure inline */
+        /* .name_container_tag
+        {
+            text-align: center;
+            margin-top: 30px;
+        } */
+
+
+
+        /* pure external */
+        /* .name_container_tag:hover
+        {
+            text-shadow: 0px 0px 10px rgba(0, 255, 242, 0.5);
+            filter: dropshadow(color= rgba(0, 255, 242, 0.5), offx=0, offy=0);
+        } */
+
+        
+        
+        .border-box
+        {
+            border: 2px solid rgb(0, 251, 255);
+            border-radius: 20px;
+            color: rgb(2, 45, 2);
+        }
+
+        .tagline
+        {
+            color: rgb(2, 0, 45);
+            word-spacing: normal;
+            letter-spacing: normal;
+            margin: 25px;
+            background-color: rgb(0, 247, 255);
+            padding: 10px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        
+        .title
+        {
+            color: rgb(2, 0, 45);
+            word-spacing: normal;
+            letter-spacing: normal;
+            margin-top: 30px;
+            background-color: rgb(0, 247, 255);
+            padding: 10px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        .subtitle
+        {
+            color: rgb(2, 0, 45);
+            word-spacing: normal;
+            letter-spacing: normal;
+            margin: 0 auto;
+            margin-top: 50px;
+            background-color: rgb(0, 255, 208);
+            padding: 10px;
+            border-radius: 20px;
+            font-weight: 600;
+            width: 75%;
+        }
+
+        .description
+        {
+            margin: 20px auto;
+            padding: 2px;
+            color: rgb(238, 247, 255);
+            /* border: 1px solid red; */
+            word-spacing: normal;
+            letter-spacing: normal;
+            font-size: 20px;
+            width: 60%;
+            /* text-align: justify; */
+        }
+
+
+
+        
+        /* pure inline */
+        /* a
+        {
+            display: block;
+            text-decoration: none;
+        } */
+
+
+
+    </style>
+
+</head>
+
+
+<body>
+    
+    <div class="border-box" style="color: rgb(238, 255, 238);">
+        <div class="name_container" style="text-align: center;margin: 35px;">
+            <span class="name">U</span>
+            <span class="name">r</span>
+            <span class="name">v</span>
+            <span class="name">i</span>
+            <span class="name">s</span>
+            <span class="name">h</span>
+            <span class="name space"> </span>
+            <span class="name">P</span>
+            <span class="name">a</span>
+            <span class="name">t</span>
+            <span class="name">e</span>
+            <span class="name">l</span>
+        </div>
+
+        <div class="name_container_tag" style="text-align: center;margin-top: 33px;">
+            <p class="tag">Competitive Coder</p>
+            <p class="tag">Aspiring WebDeveloper</p>
+            <p class="tag">Compatible and Dedicated Learner</p>
+        </div>
+
+        <p class="tagline">A passionate and aspiring person. Learning new Technologies & Skills.</p>
+    </div>
+
+    <div class="border-box" style="color: rgb(238, 255, 238);">
+
+        <p class="title">Education</p>
+
+        <p class="subtitle">B.Tech in Computer Science and Engineering</p>
+
+        <p class="description">Nirma University, Ahmedabad
+            <br>09/2021 - 06/2025
+            <br>CGPA: 9.23/10
+        </p>
+
+        <p class="subtitle">Class 12th</p>
+
+        <p class="description">Uttar Gujarat Education Trust, Surat
+            <br>06/2020 - 03/2021
+            <br>Percentile: 99.30
+        </p>
+
+        <p class="subtitle">Class 10th</p>
+
+        <p class="description">Uttar Gujarat Education Trust, Surat
+            <br>06/2018 - 03/2019
+            <br>Percentile: 99.84
+        </p>        
+    </div>
+
+    <div class="border-box" style="color: rgb(238, 255, 238);">
+
+        <p class="title">Projects</p>
+
+        <a href="https://github.com/The-UrvishPatel/File-Explorer-in-C" style="display: block; text-decoration: none;"><p class="subtitle">File Management System in C</p></a>
+
+        <p class="description">Project includes DSA concepts like Recusion, Tree & DFS.</p>
+
+        <a href="https://github.com/The-UrvishPatel/Banking-Management-System" style="display: block; text-decoration: none;"> <p class="subtitle">Banking Management System in JAVA</p></a>
+        
+
+        <p class="description">Implemented functionalities of baking using OOP concepts in JAVA.</p>
+
+        <a href="https://github.com/The-UrvishPatel/Election-Management-System" style="display: block; text-decoration: none;"><p class="subtitle">Election Management System in C</p></a>
+        
+        <p class="description">It is console based application provides basic functions like casting a vote, sorting,<br> storing results in text file.</p>
+
+    
+    </div>
+
+    <div class="border-box" style="color: rgb(238, 255, 238);">
+        <p class="title">Let's Connect</p>
+
+        <a href="urvishpatel167@gmail.com" style="display: block; text-decoration: none;"> <p class="subtitle">My Gmail</p></a>
+        <a href="https://linkedin.com/in/urvish-patel-844146217" style="display: block; text-decoration: none;"> <p class="subtitle">LinkedIn</p></a>
+        <a href="https://github.com/The-UrvishPatel" style="display: block; text-decoration: none;"> <p class="subtitle">Github </p></a>
+    
+    </div>
+
+</body>
+</html>

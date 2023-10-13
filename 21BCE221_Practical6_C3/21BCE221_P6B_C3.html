@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merge Arrays</title>
+
+    <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+        
+        *
+        {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+
+        body
+        {
+            color: rgb(30, 30, 30);
+            background-color: rgb(245, 245, 245);
+            height: 100vh;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container
+        {
+            height: 80%;
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(4, 0, 64);
+            border: 2px solid rgb(0, 0, 182);
+            border-radius: 20px;
+            filter: drop-shadow(0 0 100px rgba(0, 110, 255, 0.5));
+        }
+
+        .box
+        {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        .input
+        {
+            background-color: white;
+            border: hidden;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 20px;
+            border: 2px solid rgb(0, 0, 182);
+            width: 45%;
+        }
+
+        .button
+        {
+            background-color: rgb(0, 183, 255);
+            border: hidden;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 20px;
+            border: 2px solid rgb(0, 0, 182);
+            width: 30%;
+        }
+
+        .button:hover
+        {
+            cursor: pointer;
+            background-color: rgb(0, 138, 224);
+        }
+
+        #ans
+        {
+            color: rgba(42, 42, 42, 0.5);
+        }
+
+
+    </style>
+
+</head>
+<body>
+    
+    <div class="container">
+
+        <div class="box">
+            
+            <label for="array1" class="input"><b>Enter the Array1 : </b></label>
+            <input type="text" name="array1" class="input" id="array1" placeholder="Eg: 5,-1,2,34,900,...">
+            
+        </div>
+        
+        <div class="box">
+            
+            <label for="array2" class="input"><b>Enter the Array2 : </b></label>
+            <input type="text" name="array2" class="input" id="array2" placeholder="Eg: 87,-190,3,34,930,...">
+            
+        </div>
+        
+        <div class="box">
+            
+            <label for="answer" class="input"><b>Answer : </b></label>
+            <div type="text" name="answer" class="input" id="ans" placeholder="Answer">Answer Here!</div>
+            
+        </div>
+
+        <button type="submit" class="button" onclick="get_answer()">Get Answer!</button>
+    
+    </div>
+
+    <script>
+
+        function get_answer()
+        {
+            let a1 = document.getElementById("array1").value;
+            let a2 = document.getElementById("array2").value;
+
+            if(a1=="" && a2=="")
+            {
+                document.getElementById("ans").innerHTML = "---";
+                document.getElementById("ans").style.color = "rgb(30, 30, 30)";
+                document.getElementById("ans").style.fontWeight = "800";
+                return ;
+            }
+            else if(a1=="")
+            {
+                document.getElementById("ans").innerHTML = a2;
+                document.getElementById("ans").style.color = "rgb(30, 30, 30)";
+                document.getElementById("ans").style.fontWeight = "800";
+                return ;
+            }
+            else if(a2=="")
+            {
+                document.getElementById("ans").innerHTML = a1;
+                document.getElementById("ans").style.color = "rgb(30, 30, 30)";
+                document.getElementById("ans").style.fontWeight = "800";
+                return ;
+            }
+
+            a1 = a1.split(",");
+            a2 = a2.split(",");
+
+            let ans = [];
+
+            for(let i=0;i<a1.length;i++)
+            {
+                ans.push(parseInt(a1[i]));
+            }
+
+            for(let i=0;i<a2.length;i++)
+            {
+                if(!ans.includes(parseInt(a2[i])))
+                ans.push(parseInt(a2[i]));
+            }
+
+            ans.sort(function(a, b) 
+            {
+                return a-b;
+            });
+
+            ans = ans.join(",");
+
+            document.getElementById("ans").innerHTML = ans;
+            document.getElementById("ans").style.color = "rgb(30, 30, 30)";
+            document.getElementById("ans").style.fontWeight = "800";
+        }
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5B - Animation</title>
+
+    <style>
+
+        body
+        {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: rgb(41, 0, 34);
+            height: 100vh;
+        }
+
+        .shape
+        {
+            height: 200px;
+            width: 200px;
+            margin-bottom: 10px;
+            background-color: rgb(255, 200, 0);
+            border: rgb(255, 200, 0);
+            animation-name: shape-change,color-change;
+            animation-duration: 1s;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+        }
+        
+        .shadow
+        {
+            height: 200px;
+            width: 200px;
+            background-color: rgb(255, 200, 0);
+            transform: perspective(100px) rotateX(60deg) scale(1,0.75);
+            filter: blur(100px);
+            animation: color-change;
+            animation-duration: 1s;
+            animation-timing-function: ease;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+        }
+        
+
+        @keyframes shape-change
+        {
+            0% {border-radius: 0;}
+            10% {border-radius: 5%;}
+            20% {border-radius: 10%;}
+            30% {border-radius: 15%;}
+            40% {border-radius: 20%;}
+            50% {border-radius: 25%;}
+            60% {border-radius: 30%;}
+            70% {border-radius: 35%;}
+            80% {border-radius: 40%;}
+            90% {border-radius: 45%;}
+            100% {border-radius: 50%;}
+        }
+
+        @keyframes color-change
+        {
+            from {background-color: rgb(255, 200, 0);}
+            to {background-color: #ff6d91;}
+
+        }
+
+
+    </style>
+
+</head>
+<body>
+
+    <div class="shape">
+    </div>
+    
+    <div class="shadow">
+    </div>
+
+
+
+</body>
+</html>

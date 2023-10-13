@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+    <style>
+        
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+        :root
+        {
+            --white: rgb(245,245,245);
+            --yellow: rgb(255, 149, 0);
+            --purple: rgb(162, 0, 255,0.8);
+            --red: rgb(255, 34, 93);
+            --post-bg: rgb(54, 54, 54);
+            --cyan: rgb(0, 255, 255);
+        }
+        
+        *
+        {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body
+        {
+            background-color: var(--white);
+            display: grid;
+            grid-template-columns: auto 2fr 1fr;
+            background-color: rgb(30, 30, 30);
+        }
+
+
+        /* SideBar */
+
+        .sidebar-container
+        {
+            width: auto;
+            height: 100vh;
+            position: sticky;
+            left: 0;
+            top: 0;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-right: 50px;
+        }
+        
+        .sidebar
+        {
+            background-color: rgb(30, 30, 30);
+            width: auto;
+            height: 100vh;
+            position: sticky;
+            left: 0;
+            top: 0;
+            filter: drop-shadow(0 0 100px rgba(0, 229, 255, 0.23));
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 30px;
+        }
+        
+        
+        .logo
+        {
+            width: 32px;
+            border-radius: 50%;
+            margin-top: 20px;
+            margin-bottom: 30px;
+            filter: drop-shadow(0 0 50px rgba(0, 229, 255,0.5));
+        }
+
+        .logo:hover
+        {
+            cursor: pointer;
+            filter: drop-shadow(0 0 50px rgba(0, 229, 255));
+        }
+        
+        .icons
+        {
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        .icons:hover
+        {
+            cursor: pointer;
+            background-color: rgb(52,52,52);
+            border-radius: 20px;
+            /* border: 2px solid red; */
+        }
+
+        .focus
+        {
+            cursor: pointer;
+            background-color: rgb(52,52,52);
+            border-radius: 20px;
+        }
+        
+        /* SideBar  Over */
+
+        .content-area
+        {
+            overflow: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* border: 2px solid red; */
+        }
+
+        .post
+        {
+            background-color: rgb(54, 54, 54);
+            color: white;
+            width: 90%;
+            /* background-color: var(--post-bg); */
+            border-radius: 20px;
+            margin: 10px;
+            padding: 20px;
+        }
+
+        .purple
+        {
+            border: 2px solid var(--purple);
+            filter: drop-shadow(0 0 100px rgba(162, 0, 255, 0.3));
+        }
+        
+        .red
+        {
+            border: 2px solid var(--red);
+            filter: drop-shadow(0 0 100px rgba(255, 34, 93, 0.3));
+        }
+        
+        .yellow
+        {
+            border: 2px solid var(--yellow);
+            filter: drop-shadow(0 0 100px rgba(255, 149, 0, 0.3));
+        }
+
+
+        ion-icon
+        {
+            color: rgb(230, 254, 255);
+        }
+
+        .red-btn
+        {
+            color: var(--red);
+        }
+
+        .blue-btn
+        {
+            color: rgb(0, 123, 255);
+        }
+
+        .liked
+        {
+            color: var(--red);
+        }
+
+
+        .profile-photo
+        {
+            aspect-ratio: 1/1;
+            border-radius: 50%;
+            width: 30px;
+            margin-right: 10px;
+        }
+
+        .info
+        {
+            height: auto;
+            width: 100%;
+            /* padding: 20px; */
+            margin-bottom: 15px;
+            margin-top: 5px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .info-left
+        {
+            height: auto;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .info-right
+        {
+            height: auto;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .text
+        {
+            margin-bottom: 10px;
+        }
+
+        .follow
+        {
+            padding: 5px 15px;
+            background-color: var(--cyan);
+            color: var(--post-bg);
+            border: hidden;
+            border-radius: 10px;
+        }
+
+        .follow:hover
+        {
+            background-color: rgb(0, 235, 235);
+            cursor: pointer;
+        }
+
+        .interact-btn
+        {
+            font-size: 20px;
+            margin: 10px 10px 10px 0;
+        }
+        
+        .interact-btn:hover
+        {
+            cursor: pointer;
+        }
+
+
+
+
+        /* .stories
+        {
+            border-bottom: 1px solide rgb(54,54,54);
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            overflow-x: auto;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            height: auto;
+            width: 100%;
+            padding: 10px;
+            margin: 0 0 10px 0;
+            position: fixed;
+            background-color: rgb(30,30,30);
+        }
+
+        .story
+        {
+            aspect-ratio: 1/1;
+            width: 50px;
+            margin-right: 20px;
+            border-radius: 50%;
+            border: 2px solid var(--purple);
+        } */
+
+
+
+        .meet-new-container
+        {
+            width: auto;
+            height: 100vh;
+            position: sticky;
+            top: 0;
+            right: 0;
+            color: white;
+            overflow: hidden;
+            font-size: small;
+        }
+
+        .meet-new
+        {
+            filter: drop-shadow(0 0 100px rgba(0, 242, 255, 0.5));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            border-radius: 20px;
+            margin: 10px;
+            flex-direction: column;
+            background-color: rgb(30, 30, 30);
+            overflow: auto;
+        }
+
+        .meet-new-title
+        {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin-bottom: 30px;
+            border-bottom: 2px solid rgb(54, 54, 54);
+            border-radius: 20px;
+            padding: 0 20px 10px 20px;
+            width: 100%;
+        }
+
+        .new-profile
+        {
+            width: 100%;
+        }
+
+        .follow-new
+        {
+            padding: 3px 7px;
+            background-color: var(--cyan);
+            color: var(--post-bg);
+            border: hidden;
+            border-radius: 10px;
+            font-size: small;
+        }
+
+        .follow-new:hover
+        {
+            background-color: rgb(0, 235, 235);
+            cursor: pointer;
+        }
+
+
+        
+        </style>
+
+</head>
+
+<body ng-app = "app" ng-controller = "ctrl" ng-init="flw = 'Follow'">
+
+    <div class="sidebar-container">
+    
+        <div class="sidebar">
+            
+            <img src="SocialX-Logo\SocialX.png" alt="logo" class="logo" title="SocialX">
+            <a href="SocialX_Profile.html"><span><ion-icon name="person-circle" size="large" class="icons" title="Profile"></ion-icon></span></a>
+            <a href="SocialX_Chat.html"><span><ion-icon name="chatbubble-ellipses" size="large" class="icons" title="Chat"></ion-icon></span></a>
+            <!-- <a href="#"><span><ion-icon name="settings" size="large" class="icons" title="Settings"></ion-icon></span></a> -->
+            <a href="SocialX_Home.html"><span><ion-icon name="albums" size="large" class="icons focus" title="Feed"></ion-icon></span></a>
+            <a href="SocialX_Signin.html"><span><ion-icon name="log-out" size="large" class="icons" title="Logout"></ion-icon></span></a>
+            
+        </div>
+
+    </div>
+    
+
+
+    <div class="content-area">
+
+        <!-- <div class="stories">
+
+            <img src="C:\My Drive\Sem 4\Web Tech\Practical10\HTML Pages\SocialX-Logo\profile-photo.jpg" alt="Story" class="story">
+            <img src="C:\My Drive\Sem 4\Web Tech\Practical10\HTML Pages\SocialX-Logo\profile-photo.jpg" alt="Story" class="story">
+            <img src="C:\My Drive\Sem 4\Web Tech\Practical10\HTML Pages\SocialX-Logo\profile-photo.jpg" alt="Story" class="story">
+            <img src="C:\My Drive\Sem 4\Web Tech\Practical10\HTML Pages\SocialX-Logo\profile-photo.jpg" alt="Story" class="story">
+            <img src="C:\My Drive\Sem 4\Web Tech\Practical10\HTML Pages\SocialX-Logo\profile-photo.jpg" alt="Story" class="story">
+            <img src="C:\My Drive\Sem 4\Web Tech\Practical10\HTML Pages\SocialX-Logo\profile-photo.jpg" alt="Story" class="story">
+            <img src="C:\My Drive\Sem 4\Web Tech\Practical10\HTML Pages\SocialX-Logo\profile-photo.jpg" alt="Story" class="story">
+
+        </div> -->
+
+
+        <!-- Feed -->
+
+        <div ng-repeat="post in posts">
+            
+            <div class={{post.class}}>
+
+                <div class="info">
+                    <div class="info-left">
+                    <img src={{post.profileimg}} alt="Profile Photo" class="profile-photo"> 
+                    <p>@{{post.profilename}}</p>
+                    </div>
+
+                    <div class="info-right">
+                        <button class="follow" ng-click="flw='Following'">{{flw}}</button>
+                    </div>
+                </div>
+
+                <div class="text">
+                    {{post.text}}
+                </div>
+    
+                <div class="interact">
+                    <span><ion-icon name={{post.name}} class="interact-btn red-btn" ng-click = "liked(post)"></ion-icon></span>
+                    <span><ion-icon name="chatbubbles-outline" class="interact-btn blue-btn"></ion-icon></span>
+                    <span><ion-icon name="bookmark-outline" class="interact-btn"></ion-icon></span>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Feed Over -->
+    </div>
+
+
+    <div class="meet-new-container">
+
+        <div class="meet-new">
+
+            <p class="meet-new-title"><b>Meet New People</b></p>
+
+            <div ng-repeat="newpep in newpeps" style="width: 100%;">
+                <div class="new-profile">
+                    <div class="info">
+                        <div class="info-left">
+                        <img src={{newpep.profileimg}} alt="Profile Photo" class="profile-photo"> 
+                        <p>@{{newpep.name}}</p>
+                        </div>
+        
+                        <div class="info-right">
+                            <button class="follow-new" ng-click="flw='Following'">{{flw}}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    
+
+
+    <script src="home.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <!-- <script>
+        let name = localStorage.getItem("current_user_name");
+        let logo = document.getElementsByClassName("logo");
+        logo.title = "SocialX : "+ name;
+    </script> -->
+</body>
+</html>

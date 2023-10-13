@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factorial</title>
+
+    <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+        
+        *
+        {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+
+        body
+        {
+            color: rgb(30, 30, 30);
+            background-color: rgb(245, 245, 245);
+            height: 100vh;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container
+        {
+            height: 80%;
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(254, 159, 50);
+            border: 2px solid rgb(165, 82, 0);
+            border-radius: 20px;
+            filter: drop-shadow(0 0 100px rgb(255, 132, 0,0.5));
+        }
+
+        .box
+        {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .input
+        {
+            background-color: white;
+            border: hidden;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 20px;
+            border: 2px solid rgb(255, 123, 0);
+        }
+
+        .button
+        {
+            background-color: rgb(237, 175, 116);
+            border: hidden;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 20px;
+            border: 2px solid rgb(165, 82, 0);
+        }
+
+        .button:hover
+        {
+            cursor: pointer;
+            background-color: rgb(214, 131, 54);
+        }
+
+        #ans
+        {
+            color: rgba(42, 42, 42, 0.5);
+        }
+
+
+    </style>
+
+</head>
+
+<body>
+    
+    <div class="container">
+
+        <div class="box">
+            
+            <label for="fact" class="input"><b>Enter the number (Integer>=0) : </b></label>
+            <input type="text" name="fact" class="input" id="number" placeholder="Eg: 5">
+            <button type="submit" class="button" onclick="get_answer()">Get Answer!</button>
+
+        </div>
+        
+        <div class="box">
+            
+            <label for="answer" class="input"><b>Answer : </b></label>
+            <div type="text" name="answer" class="input" id="ans" placeholder="Answer">Answer Here!</div>
+
+        </div>
+    </div>
+    
+    <script>
+
+        function get_answer()
+        {
+            let x = document.getElementById("number").value;
+            x = parseInt(x);
+            
+            if(isNaN(x))
+            x=0;
+
+            let answer = 1;
+
+            function fact(x)
+            {                
+                if(x==0)
+                { 
+                    answer = answer*1;
+                    return ;
+                }
+                
+                answer = x * answer;
+                fact(x-1);
+                
+                return ;
+            }
+            
+            fact(x);
+
+            document.getElementById("ans").innerHTML=answer;
+            document.getElementById("ans").style.color="rgba(30, 30, 30)";
+            document.getElementById("ans").style.fontWeight = "800";   
+        }
+    </script>
+
+</body>
+</html>

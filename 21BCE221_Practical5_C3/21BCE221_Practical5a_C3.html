@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Cards</title>
+
+    <style>
+
+      @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+        *
+        {
+            padding: 0;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: rgb(36, 36, 36);
+            box-sizing: border-box;
+        }
+
+        body
+        {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .all-cards
+        {
+            display: flex;
+            flex-direction: row;
+            height: auto;
+            width: 100%;
+            padding: 20px;
+        }
+
+        .card
+        {
+            border: 2px solid rgb(0, 0, 0, 0.01);
+            margin: 10px;
+            padding: 15px 15px;
+            border-radius: 10px;
+            text-align: center;
+            background-color: rgb(250, 250, 250);
+            filter: drop-shadow(0 50px 100px rgba(0, 255, 255, 0.212));
+            /* border-bottom-right-radius: 2px solid rgb(255, 0, 0);
+            border-bottom-right-radius: 10px; */
+        }
+
+        .description
+        {
+            text-align: left;
+            background-color: white;
+            padding: 5px 5px 10px 10px;
+            height: 220px;
+            margin-top: 15px;
+            overflow: hidden;
+        }
+
+        .buy
+        {
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: white;
+            font-size: 20px;
+            margin-top: 15px;
+        }
+
+        .image
+        {
+            width: 200px;
+            border-radius: 10px;
+            border: 1px solid rgba(36, 36, 36, 0);
+        }
+
+
+
+        .s-buy
+        {
+            background-color: #08D9D6;
+        }
+        .s-buy:hover
+        {
+            background-color: #00d0cc;
+        }
+        
+        .a-buy
+        {
+            background-color: #252A34;
+        }
+        .a-buy:hover
+        {
+            background-color: #161920;
+        }
+        
+        .w-buy
+        {
+            background-color: #FF2E63;
+        }
+        .w-buy:hover
+        {
+            background-color: #df2251;
+        }
+        
+        .p-buy
+        {
+            background-color: #FF9A00;
+        }
+        .p-buy:hover
+        {
+            background-color: #e18700;
+        }
+
+        .S
+        {
+            overflow: hidden;
+        }
+
+        .A
+        {
+            overflow: scroll;
+        }
+
+        .W
+        {
+            overflow: visible;
+        }
+
+        .P
+        {
+            overflow: auto;
+        }
+
+
+    </style>
+
+</head>
+<body>
+    
+    <div class="all-cards"> 
+        
+        <div class="shoes card">
+            
+            <!-- <img src="shoes.jpg" alt="Shoes" class="image"  style="filter: drop-shadow(0 0 10px #08D9D6);"> -->
+            <img src="shoes.jpg" alt="Shoes" class="image">
+
+            <div class="description S" style="border-left: 2px solid #08d9d6;">
+                <b style="background-color: rgb(250,250,250);">Price: $200</b> <br>
+                A shoe is an item of footwear intended to protect and comfort the human foot. They are often worn with a sock. Shoes are also used as an item of decoration and fashion. The design of shoes has varied enormously through time and from culture to culture, with form originally being tied to function.
+            </div>
+
+            <a href="#" class="s-buy buy">Buy</a>
+        </div>
+        
+        <div class="airdopes  card">
+            
+            <img src="airdopes.jpg" alt="Airdopes" class="image">
+            <!-- <img src="airdopes.jpg" alt="Airdopes" class="image" style="filter: drop-shadow(0 0 10px #252A34);"> -->
+  
+            <div class="description A" style="border-left: 2px solid #252A34;">
+                <b style="background-color: rgb(250,250,250);">Price: $50 </b><br>
+                AirPods will forever change the way you use headphones. Whenever you pull your AirPods out of the charging case, they instantly turn on and connect to your iPhone, Apple Watch, iPad, or Mac. Audio automatically plays as soon as you put them in your ears and pauses when you take them out.
+            </div>
+
+            <a href="#" class="a-buy buy">Buy</a>
+        </div>
+        
+        <div class="Watch  card">
+            
+            <!-- <img src="watch.jpg" alt="Watch" class="image" style="filter: drop-shadow(0 0 10px #FF2E63);"> -->
+            <img src="watch.jpg" alt="Watch" class="image">
+            
+            <div class="description W" style="border-left: 2px solid #FF2E63;">
+                <b style="background-color: rgb(250,250,250);">Price: $100</b> <br>
+                A watch is a portable timepiece intended to be carried or worn by a person. It is designed to keep a consistent movement despite the motions caused by the person's activities.
+            </div>
+
+            <a href="#" class="w-buy buy">Buy</a>
+        </div>
+        
+        <div class="Phone card">
+            
+            <!-- <img src="iphone.jpeg" alt="iPhone" class="image" style="filter: drop-shadow(0 0 10px #FF9A00);"> -->
+            <img src="iphone.jpeg" alt="iPhone" class="image">
+
+            <div class="description P" style="border-left: 2px solid #FF9A00;">
+                <b style="background-color: rgb(250,250,250);">Price: $1000</b><br>
+                The iPhone is a smartphone made by Apple that combines a computer, iPod, digital camera and cellular phone into one device with a touchscreen interface. The iPhone runs the iOS operating system, and in 2021 when the iPhone 13 was introduced, it offered up to 1 TB of storage and a 12-megapixel camera.
+            </div>
+
+            <a href="#" class="p-buy buy">Buy</a>
+        </div>
+    
+    </div>
+
+
+</body>
+</html>

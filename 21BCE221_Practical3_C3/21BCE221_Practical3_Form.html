@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
+    <style>
+        *
+        {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            box-sizing: border-box;
+        }
+
+        body
+        {
+            background-color: rgb(50, 50, 50);
+            justify-content: center;
+        }
+
+        h1
+        {
+            background-color: rgb(14, 14, 14);
+        }
+
+        #title
+        {
+            color: rgb(225, 225, 225);
+            text-align: center;
+            padding: 10px;
+        }
+
+        #hr
+        {
+            color: rgb(225, 225, 225);
+            background-color: rgb(225, 225, 225);
+            size: 0.5px;
+            opacity: 10%;
+        }
+
+        .center
+        {
+            width: 90%;
+            margin: auto;
+            /* border: 2px solid red; */
+        }
+
+        .single
+        {
+            display: inline-block;
+            padding: 20px;
+            border: 0.1px solid rgb(255, 255, 255);
+            border-radius: 3px;
+            background-color: rgb(255, 255, 255);
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .double-left
+        {
+            float: left;
+            padding: 20px;
+            border: 0.1px solid rgb(255, 255, 255);
+            border-radius: 3px;
+            background-color: rgb(255, 255, 255);
+            width: 48%;
+            margin-bottom: 10px;
+        }
+
+        .double-right
+        {
+            float: right;
+            padding: 20px;
+            border: 0.1px solid rgb(255, 255, 255);
+            border-radius: 3px;
+            background-color: rgb(255, 255, 255);
+            width: 48%;
+            margin-bottom: 10px;
+        }
+
+        .tri-right
+        {
+            float: right;
+            padding: 9px;
+            border: 0.1px solid rgb(255, 255, 255);
+            border-radius: 3px;
+            background-color: rgb(255, 255, 255);
+            width: 8%;
+            margin-bottom: 10px;
+        }
+
+        .tri-left
+        {
+            float: left;
+            padding: 9px;
+            border: 0.1px solid rgb(255, 255, 255);
+            border-radius: 3px;
+            background-color: rgb(255, 255, 255);
+            width: 8%;
+            margin-bottom: 10px;
+        }
+
+        .form
+        {
+            margin-top: 20px;
+        }
+
+        .fixit
+        {
+            visibility: hidden;
+            height: 0;
+            padding: 0;
+            margin-bottom: 0;
+            background-color: rgb(50, 50, 50);
+        }
+
+        .submit
+        {
+            border: 1px solid black;
+            margin-top: 18px;
+        }
+
+        .final
+        {
+            border: 2px solid rgb(255, 145, 0);
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1 id="title">Registration Form</h1>
+
+    <hr id="hr">
+
+        <form action="" target="https://google.com" class="form" method="post">
+
+            <div class="center">
+
+                <div class="float">
+                    <input type="text" placeholder="First Name" class="double-left" required>
+                    <input type="text" placeholder="Last Name" class="double-right" required>
+                </div>
+
+                <div class="single fixit"></div>
+
+                <input type="email" placeholder="Email" class="single" required>
+                
+                <div class="single fixit"></div>
+                
+                <div class="float">
+                    <input type="text" placeholder="Roll Number" class="double-left" required>
+                    <input type="text" placeholder="Branch Name" class="double-right" required>
+                </div>
+
+                <div class="single fixit"></div>
+<!-- 
+                <div class="single">
+                    hey
+                </div> -->
+                
+                <div class="float">
+                    <label for="date" class="double-left">Date of Birth :</label>
+                    <input type="date" id="date" name="date" placeholder="DoB" class="double-right" required>
+                </div>
+
+                <div class="single fixit"></div>
+
+                <div class="float">
+                    <label for="current-year" class="double-left">Current Year of Study :</label>
+                    <select name="current-year" id="current-year" class="double-right">
+                        <option value="1st Year">1st Year</option>
+                        <option value="2nd Year"  selected>2nd Year</option>
+                        <option value="3rd Year">3rd Year</option>
+                        <option value="4th Year">4th Year</option>
+                    </select>
+                </div>
+
+                <div class="single fixit"></div>
+                 
+                <div class="float">
+                    <input type="text" placeholder="Institute Name" class="double-left" required>
+                    <input type="tel" placeholder="Contact Number" class="double-right" required>
+                </div>
+                
+                <div class="single fixit"></div>
+
+                <div class="float">
+                    <p class="double-left">Gender</p>
+
+                    <input type="radio" id="male" name="Gender" value="Male" class="tri-right">
+                    <label for="male" class="tri-right">Male</label>
+                    
+                    <input type="radio" id="female" name="Gender" value="Female" class="tri-right">
+                    <label for="female" class="tri-right">Female</label>
+                    
+                    <input type="radio" id="other" name="Gender" value="Other" class="tri-right">
+                    <label for="other" class="tri-right">Other</label>
+                </div>
+
+                <div class="single fixit"></div>
+
+                <div class="float">
+                    <p class="single">Select Event</p>
+
+                    <input type="checkbox" id="Event1" name="Event1" value="Event1" class="tri-left">
+                    <label for="Event1" class="tri-left">Event1</label>
+                    
+                    <input type="checkbox" id="Event2" name="Event2" value="Event2" class="tri-left">
+                    <label for="Event2" class="tri-left">Event2</label>
+                    
+                    <input type="checkbox" id="Event3" name="Event3" value="Event3" class="tri-left">
+                    <label for="Event3" class="tri-left">Event3</label>
+
+                    <input type="checkbox" id="Event6" name="Event6" value="Event6" class="tri-right">
+                    <label for="Event6" class="tri-right">Event6</label>
+
+                    <input type="checkbox" id="Event5" name="Event5" value="Event5" class="tri-right">
+                    <label for="Event5" class="tri-right">Event5</label>
+
+                    <input type="checkbox" id="Event4" name="Event4" value="Event4" class="tri-right">
+                    <label for="Event4" class="tri-right">Event4</label>
+
+                </div>
+
+                <div class="single fixit"></div>
+                
+                <div class="float">
+                    <label for="document" class="single">Upload Documents</label>
+                </div>
+
+                <div class="single fixit"></div>
+                
+                <div class="float">
+                    <label for="document" class="double-left">Select Document :</label>
+                    <select name="document" id="document" class="double-right">
+                        <option value="Aadhar">Aadhar Card</option>
+                        <option value="ID Card">ID Card</option>
+                        <option value="Marksheet">Marksheet</option>
+                        <option value="Payment Screenshot">Payment Screenshot</option>
+                    </select>
+                </div>
+                
+                <div class="single fixit"></div>
+                
+                <div class="float">
+                    <div class="single">
+                        <input type="file" class="double-left">
+                        <input type="submit" class="tri-right submit">
+                    </div>
+                </div>
+
+                <div class="single fixit"></div>
+
+                <div class="float">
+                    <input type="reset" class="double-left final">
+                    <input type="submit" class="double-right final">
+                </div>
+                
+            </div>
+        </form>
+
+</body>
+</html>

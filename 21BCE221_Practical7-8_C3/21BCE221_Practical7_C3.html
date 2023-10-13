@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpaceX | Space Ride</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+
+    <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;1,800&display=swap');
+
+        :root
+        {
+            --bg: rgb(0, 0, 40);
+        }
+
+
+        *
+        {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+            scroll-behavior: smooth;
+        }
+
+        body
+        {
+            background-color: var(--bg);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 50px;
+            height: auto;
+            background-image: linear-gradient(rgba(0, 0, 255, 0.278),rgba(0, 0, 0, 0.267)), url("spacex.jpg");
+            background-size: cover;
+            color: white;
+        }
+
+        img
+        {
+            width: 200px;
+        }
+
+        .line
+        {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 50px;
+            justify-content: space-between;
+            color: rgba(255, 255, 255);
+            width: 100%;
+        }
+
+        .form-container
+        {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+
+        input
+        {
+            padding: 10px 20px;
+            margin: 10px;
+            border: hidden;
+            border-radius: 20px;
+        }
+
+        .radio
+        {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            margin: 10px;
+            border-radius: 20px;
+            border: hidden;
+            background-color: white;
+            color: black;
+        }
+        
+        select
+        {
+            padding: 10px 20px;
+            margin: 10px;
+            border-radius: 20px;
+            border: hidden;
+            background-color: white;
+            color: black;
+        }
+
+        .details
+        {
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: rgba(0, 0, 49, 0.5);
+            color: white;
+            border-radius: 20px;
+        }
+
+        .btn
+        {
+            text-decoration: none;
+            color: white;
+            background-color: rgb(255, 94, 0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            border-radius: 20px;
+        }
+
+        .btn:hover
+        {
+            background-color: rgb(255, 80, 0);
+        }
+
+    </style>
+
+</head>
+<body ng-app = "app" ng-controller="ctrl">
+
+    <div class="form-container">
+
+        <div class="line">
+            <input type="text" placeholder="First Name" ng-model="firstname">
+            <p class="details">First Name : <span ng-bind="firstname"></span></p>
+        </div>
+
+        <div class="line">
+            <input type="text" placeholder="Last Name" ng-model="lastname">
+            <p class="details">Last Name : {{ lastname }}</p>
+        </div>
+        
+        <div class="line">
+            <input type="number" placeholder="Contact Number" ng-model="contact">
+            <p class="details">Contact Number : {{ contact }}</p>
+        </div>
+        
+        <div class="line">
+            <input type="email" name="email" id="email" placeholder="Email ID" ng-model="email">
+            <p class="details">Email : {{ email }}</p>
+        </div>
+        
+        <div class="line">
+            <div class="radio">
+                <label for="gender"> Gender </label>
+                <div class="radio1">
+                    <input type="radio" name="Gender" value="Male" ng-model="gender">
+                    <label for="male">Male</label>
+                </div>
+                
+                <div class="radio2">
+                    <input type="radio" name="Gender" value="Female" ng-model="gender">
+                    <label for="female">Female</label>
+                </div>
+
+            </div>
+            <p class="details">Gender : {{ gender }}</p>
+        </div>
+
+
+        <div class="line">
+            <select name="planet" ng-model="planet">
+                <option value="None" selected>Select Planet</option>
+                <option value="Mercury">Mercury</option>
+                <option value="Venus">Venus</option>
+                <option value="Earth">Earth</option>
+                <option value="Mars">Mars</option>
+                <option value="Jupiter">Jupiter</option>
+                <option value="Saturn">Saturn</option>
+                <option value="Uranus">Uranus</option>
+                <option value="Neptune">Neptune</option>
+                <option value="Pluto">Pluto</option>
+            </select>
+
+            <p class="details">Trip to Planet : {{ planet }}</p>
+        </div>
+
+        <div class="line">
+            <input type="date" name="date" id="date" placeholder="Date of Trip" ng-model="date">
+            <p class="details">Date of Trip : {{ date | date : "dd-MMMM-y" }}</p>
+        </div>
+
+        <div class="line">
+            <input type="number" name="weight" id="weight" placeholder="Carrying Weight(kg)" ng-model="weight">
+            <p class="details">Weight : {{ weight }}</p>
+        </div>
+        
+        <div class="line">
+            <p class="details">Total Cost : {{ 100*weight | currency }}</p>
+            <a href="https://www.spacex.com/human-spaceflight/" class="btn">Confirm</a>
+        </div>
+    </div>
+
+    <script>
+
+        let app = angular.module('app', []);
+    
+        app.controller('ctrl', function($scope) {
+
+            $scope.gender = "Male"
+        });
+
+    </script>
+
+</body>
+</html>
